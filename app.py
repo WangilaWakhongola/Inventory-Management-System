@@ -3,12 +3,12 @@ Inventory Management System
 A Flask-based application for managing inventory with SQLite database
 """
 
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
 
 # Database Configuration
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -51,7 +51,7 @@ class Product(db.Model):
 @app.route('/')
 def index():
     """Display dashboard with inventory overview"""
-    products = Product.query.all()
+    products = db.session.execute(db.select(Product)).scalars().all()
     total_products = len(products)
     total_value = sum(p.quantity * p.price for p in products)
     low_stock = sum(1 for p in products if p.quantity <= p.reorder_level)
@@ -65,7 +65,7 @@ def index():
 @app.route('/api/products', methods=['GET'])
 def get_products():
     """Get all products (API endpoint)"""
-    products = Product.query.all()
+    products = db.session.execute(db.select(Product)).scalars().all()
     return jsonify([p.to_dict() for p in products])
 
 @app.route('/api/products', methods=['POST'])
@@ -93,14 +93,14 @@ def create_product():
 @app.route('/api/products/<int:id>', methods=['GET'])
 def get_product(id):
     """Get a specific product"""
-    product = Product.query.get_or_404(id)
+    product = db.get_or_404(Product, id)
     return jsonify(product.to_dict())
 
 @app.route('/api/products/<int:id>', methods=['PUT'])
 def update_product(id):
     """Update a product"""
     try:
-        product = Product.query.get_or_404(id)
+        product = db.get_or_404(Product, id)
         data = request.get_json() or request.form
         
         product.name = data.get('name', product.name)
@@ -120,7 +120,7 @@ def update_product(id):
 def delete_product(id):
     """Delete a product"""
     try:
-        product = Product.query.get_or_404(id)
+        product = db.get_or_404(Product, id)
         db.session.delete(product)
         db.session.commit()
         return jsonify({'message': 'Product deleted successfully'})
@@ -133,7 +133,7 @@ def search_products():
     query = request.args.get('q', '').lower()
     category = request.args.get('category', '').lower()
     
-    products = Product.query.all()
+    products = db.session.execute(db.select(Product)).scalars().all()
     
     if query:
         products = [p for p in products if query in p.name.lower() or query in p.description.lower()]
@@ -146,7 +146,7 @@ def search_products():
 @app.route('/api/stats', methods=['GET'])
 def get_stats():
     """Get inventory statistics"""
-    products = Product.query.all()
+    products = db.session.execute(db.select(Product)).scalars().all()
     
     stats = {
         'total_products': len(products),
@@ -157,7 +157,8 @@ def get_stats():
     
     return jsonify(stats)
 
+with app.app_context():
+    db.create_all()
+
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
