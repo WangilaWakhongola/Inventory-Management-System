@@ -1,9 +1,9 @@
 Inventory Management System
 A modern, Flask-based web application for real-time inventory tracking, product management, and business analytics. Streamline your stock operations with an intuitive dashboard and powerful RESTful API.
 
-https://img.shields.io/badge/python-3.8%252B-blue
-https://img.shields.io/badge/flask-2.3.3-green
-https://img.shields.io/badge/license-MIT-orange
+https://img.shields.io/badge/python-3.8%252B-blue<br/>
+https://img.shields.io/badge/flask-2.3.3-green<br/>
+https://img.shields.io/badge/license-MIT-orange<br/>
 https://img.shields.io/badge/database-SQLite-lightgrey
 
  Overview
