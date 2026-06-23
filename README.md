@@ -6,10 +6,10 @@ https://img.shields.io/badge/flask-2.3.3-green
 https://img.shields.io/badge/license-MIT-orange
 https://img.shields.io/badge/database-SQLite-lightgrey
 
-📋 Overview
+ Overview
 Transform how you manage inventory with this comprehensive web application. Built with Flask and modern web technologies, it provides real-time visibility into stock levels, automated low-stock alerts, and detailed analytics - all through an elegant, responsive interface.
 
-✨ Key Features
+ Key Features
 📦 Product Management
 Complete CRUD Operations: Add, edit, delete, and view products seamlessly
 
