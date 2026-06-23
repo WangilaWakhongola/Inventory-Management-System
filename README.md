@@ -10,28 +10,28 @@ https://img.shields.io/badge/database-SQLite-lightgrey
 Transform how you manage inventory with this comprehensive web application. Built with Flask and modern web technologies, it provides real-time visibility into stock levels, automated low-stock alerts, and detailed analytics - all through an elegant, responsive interface.
 
  Key Features
-📦 Product Management
+Product Management
 Complete CRUD Operations: Add, edit, delete, and view products seamlessly
 
 Smart Forms: Intuitive product entry with validation
 
 Bulk Operations: Manage multiple products efficiently
 
-📊 Real-Time Analytics
+ Real-Time Analytics
 Live Dashboard: Instant visibility into key metrics
 
 Inventory Value Tracking: Automatic calculation of total stock value
 
 Category Analytics: Breakdown of products by category
 
-⚡ Intelligent Alerts
+ Intelligent Alerts
 Low Stock Detection: Automatic identification of items below reorder level
 
 Visual Indicators: Color-coded status for immediate recognition
 
 Priority Notifications: Highlight critical inventory items
 
-🔍 Advanced Search & Filter
+ Advanced Search & Filter
 Multi-criteria Search: Find products by name, category, or description
 
 Category Filtering: Quick navigation by product type
@@ -45,7 +45,7 @@ JSON Responses: Easy integration with other systems
 
 Comprehensive Endpoints: Complete inventory management via API
 
-🚀 Quick Start
+ Quick Start
 Prerequisites
 Python 3.8 or higher
 
@@ -70,7 +70,7 @@ pip install -r requirements.txt
 python app.py
 Your application is now running at: http://localhost:5000
 
-📦 Installation Options
+ Installation Options
 Standard Installation with Virtual Environment
 dongt onclude those icones
 Here's the rewritten version without icons:
