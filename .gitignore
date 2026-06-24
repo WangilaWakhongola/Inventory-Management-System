@@ -1,31 +1,22 @@
-# Python
+# Database file (auto-generated)
+inventory.db
+
+# Python cache
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-.Python
-env/
+*.pyo
+
+# Virtual environments
 venv/
-ENV/
+env/
+.venv/
 
-# Flask
-instance/
-.webassets-cache
-
-# Database
-*.db
-*.sqlite
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
+# OS files
 .DS_Store
 Thumbs.db
 
-# Environment variables
-.env
-.env.local
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
